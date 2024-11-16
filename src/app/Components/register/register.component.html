@@ -1,0 +1,138 @@
+<div class="container mt-5">
+  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+    <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Inscription - Informations Personnelles</h5>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="firstName">Prénom</label>
+              <input type="text" id="prenom" class="form-control" formControlName="prenom" placeholder="prenom" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Nom</label>
+              <input type="text" id="nom" class="form-control" formControlName="nom" placeholder="nom" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Numéro de Telephone</label>
+              <input type="number" id="telephone" class="form-control" formControlName="telephone" placeholder="Telephone" required />
+            </div>
+            <div class="form-group">
+              <label for="role">Rôle</label>
+              <select id="role" formControlName="role" class="form-control" aria-label=".form-select-lg example">
+                <option value="" disabled selected>Selectionner un rôle</option>
+                <option value="user">Utilisateur</option>
+                <option value="admin">Administrateur</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="showModal = false">Suivant</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!showModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Inscription - Informations Personnelles</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showModal = false">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" id="password" class="form-control" formControlName="password" placeholder="Mot de passe" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Confirmer mot de passe</label>
+              <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="Confirmer Mot de passe" required />
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">S'inscrire</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modale d'erreur -->
+    <div *ngIf="showErrorModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Erreur</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showErrorModal = false">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Une erreur est survenue lors de votre inscription. Veuillez réessayer plus tard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modale d'inscription réussie -->
+    <div *ngIf="showSuccessModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Succès</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showSuccessModal = false">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Votre inscription a été réussie ! Vous serez redirigé vers la page de connexion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <div>
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" formControlName="prenom" />
+  </div>
+
+  <div>
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" formControlName="nom" />
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+  </div>
+
+  <div>
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" formControlName="password" />
+  </div>
+
+  <div>
+    <label for="confirmPassword">Confirmer mot de passe:</label>
+    <input type="password" id="confirmPassword" formControlName="confirmPassword" />
+  </div>
+
+  <div>
+    <label for="telephone">Numéro de téléphone:</label>
+    <input type="text" id="telephone" formControlName="telephone" />
+  </div>
+
+  <div>
+    <label for="role">Rôle:</label>
+    <select id="role" formControlName="role">
+      <option value="user">Utilisateur</option>
+      <option value="admin">Administrateur</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!registerForm.valid">S'inscrire</button>
+</form> -->

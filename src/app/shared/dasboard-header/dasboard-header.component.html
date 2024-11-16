@@ -1,0 +1,25 @@
+<div class="dashboard-header">
+  <!-- Image (137x59) -->
+  <img src="../../../assets/yakar.png" alt="Logo" width="137" height="59">
+
+  <!-- Image (40x40) -->
+  <img src="../../../assets/profil.png" alt="User" width="40" height="40">
+
+  <!-- Déconnexion -->
+  <button (click)="onLogout()">
+    <i class="fa fa-sign-out"></i> Déconnexion
+  </button>
+
+  <!-- Dark Mode Toggle -->
+  <button (click)="toggleDarkMode()">
+    <i class="fa" [ngClass]="{ 'fa-moon': !isDarkMode, 'fa-sun': isDarkMode }"></i>
+  </button>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a routerLink="/accueil" class="nav-link">Accueil</a></li>
+      <li><a routerLink="/activites" class="nav-link">Activités</a></li>
+    </ul>
+  </nav>
+</div>
